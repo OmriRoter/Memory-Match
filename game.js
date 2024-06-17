@@ -1,23 +1,22 @@
 // game.js
-const cards = [
-    { id: 1, symbol: '🍎', matched: false },
-    { id: 2, symbol: '🍌', matched: false },
-    { id: 3, symbol: '🍓', matched: false },
-    { id: 4, symbol: '🍊', matched: false },
-    { id: 5, symbol: '🍋', matched: false },
-    { id: 6, symbol: '🍇', matched: false },
-    { id: 7, symbol: '🍐', matched: false },
-    { id: 8, symbol: '🍒', matched: false },
-    // Duplicate cards for matching
-    { id: 9, symbol: '🍎', matched: false },
-    { id: 10, symbol: '🍌', matched: false },
-    { id: 11, symbol: '🍓', matched: false },
-    { id: 12, symbol: '🍊', matched: false },
-    { id: 13, symbol: '🍋', matched: false },
-    { id: 14, symbol: '🍇', matched: false },
-    { id: 15, symbol: '🍐', matched: false },
-    { id: 16, symbol: '🍒', matched: false }
-  ];
+const cardsData = [
+  { id: 1, symbol: '🍎' },
+  { id: 2, symbol: '🍌' },
+  { id: 3, symbol: '🍓' },
+  { id: 4, symbol: '🍊' },
+  { id: 5, symbol: '🍋' },
+  { id: 6, symbol: '🍇' },
+  { id: 7, symbol: '🍐' },
+  { id: 8, symbol: '🍒' }
+];
+
+const cards = [...cardsData, ...cardsData].map((card, index) => ({
+  ...card,
+  id: index + 1,
+  matched: false
+}));
+
+
   
 let player1Name = '';
 let player2Name = '';
@@ -54,22 +53,22 @@ function createGameBoard() {
     const backFace = document.createElement('div');
     backFace.classList.add('back-face');
 
-    const symbolElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    symbolElement.setAttribute('viewBox', '0 0 100 100');
-    const symbolPath = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    symbolPath.setAttribute('x', '50');
-    symbolPath.setAttribute('y', '62');
-    symbolPath.setAttribute('text-anchor', 'middle');
-    symbolPath.setAttribute('font-size', '60');
-    symbolPath.textContent = card.symbol;
-    symbolElement.appendChild(symbolPath);
+    const canvas = document.createElement('canvas');
+    canvas.width = 120;
+    canvas.height = 120;
+    const ctx = canvas.getContext('2d');
+    ctx.font = '60px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(card.symbol, 60, 60);
 
-    frontFace.appendChild(symbolElement);
+    frontFace.appendChild(canvas);
     cardElement.appendChild(frontFace);
     cardElement.appendChild(backFace);
     gameBoard.appendChild(cardElement);
   });
 }
+
 
 // Handle card click
 function handleCardClick(event) {

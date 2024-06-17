@@ -157,3 +157,17 @@ h1 {
 #newGameButton:hover {
     background-color: #ff4757; /* Darker pink on hover */
 }
+
+.symbol {
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+.card canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
