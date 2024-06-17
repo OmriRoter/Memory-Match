@@ -8,23 +8,27 @@
 </head>
 <body>
   <div id="gameContainer">
+    <h1>Memory Game</h1>
     <div id="playerInfo">
-      <label for="player1">Player 1 Name:</label>
-      <input type="text" id="player1" placeholder="Enter your name">
-      <label for="player2">Player 2 Name:</label>
-      <input type="text" id="player2" placeholder="Enter your name">
+      <div class="player">
+        <label for="player1">Player 1:</label>
+        <input type="text" id="player1" placeholder="Enter name">
+      </div>
+      <div class="player">
+        <label for="player2">Player 2:</label>
+        <input type="text" id="player2" placeholder="Enter name">
+      </div>
     </div>
     <div id="scoreBoard">
-      <div>
+      <div class="score">
         <div id="player1Score">Player 1 Score: 0</div>
         <div id="player1Wins">Player 1 Wins: 0</div>
       </div>
-      <div>
+      <div class="score">
         <div id="player2Score">Player 2 Score: 0</div>
         <div id="player2Wins">Player 2 Wins: 0</div>
       </div>
     </div>
-    <div id="currentPlayerDisplay"></div>
     <div id="gameBoard"></div>
     <button id="newGameButton">New Game</button>
   </div>
